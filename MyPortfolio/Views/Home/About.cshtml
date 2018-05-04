@@ -1,0 +1,187 @@
+﻿@model MyPortfolio.Models.PhotoModel
+@{
+    ViewBag.Title = "About Me!";
+    ViewBag.Message = "I'm a fresh graduate at NAIT from Digital Media and Information Technology Program. I'm seeking for an Software Developer - Entry Level Position.";
+}
+<style>
+    * {
+        box-sizing: border-box
+    }
+
+    body {
+        font-family: Verdana, sans-serif;
+        margin: 0
+    }
+
+    .mySlides {
+        display: none
+    }
+
+    img {
+        vertical-align: middle;
+    }
+
+    /* Slideshow container */
+    .slideshow-container {
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+    }
+
+    /* Next & previous buttons */
+    .prev, .next {
+        width: auto;
+        padding: 5px;
+        margin-top: 0px;
+        cursor: pointer;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+            background-color: rgba(192,192,192,0.8);
+        }
+
+    /* Caption text */
+    .text {
+        color: #f2f2f2;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Number text (1/3 etc) */
+    .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+    }
+
+    /* The dots/bullets/indicators */
+    .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+
+    /* Fading animation */
+    .fade {
+        -webkit-animation-name: fade;
+        -webkit-animation-duration: 1.5s;
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+</style>
+<div class="w3-margin-top">
+    <div class="w3-container w3-card-4 w3-white w3-margin-bottom">
+        <div class="w3-container">
+            <br />
+            <h2>@ViewBag.Title</h2>
+            <h6>@ViewBag.Message</h6>
+        </div>
+    </div>
+    <div class="w3-container w3-card-4 w3-white w3-margin-bottom">
+        <div class="w3-bar w3-teal w3-margin-top">
+            <button class="w3-bar-item w3-button" onclick="openInformation('Skill')">Skill</button>
+            <button class="w3-bar-item w3-button" onclick="openInformation('Project')">Project</button>
+            <button class="w3-bar-item w3-button" onclick="openInformation('Resume')">Resume</button>
+        </div>
+        <div id="Skill" class="w3-container information">
+            <br />
+            <h4>ASP.NET Webforms</h4>
+            <div class="w3-light-grey w3-round-xlarge w3-small">
+                <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">90%</div>
+            </div>
+            <p>Knowledgeable in using webforms </p>
+            <div class="w3-row-padding w3-margin-top">
+                @{int counter = 1;}
+                @foreach (var image in Model.ImageFilePath)
+                {
+                    <div class="mySlides" style="text-align:center">
+                        <h5><span style="color:teal; font-weight:100">FSOSS Project - bHS Proejct</span> </h5>
+                        <div class="w3-container w3-card-4 w3-white w3-margin-bottom">
+                            <div class="w3-container">
+                                <img src="@Url.Content(image)" style="width:100%; height:400px">
+                            </div>
+
+                        </div>
+                    </div>
+                    counter++;
+                }
+                <div clas="row" style="text-align:center">
+                    <a class="prev" style="color:teal" onclick="plusSlides(-1)">Prev</a>
+                    <a class="next" style="color:teal" onclick="plusSlides(1)">Next</a>
+                </div>
+            </div>
+            <div id="Project" class="w3-container information" style="display:none">
+                <h2>Tokyo</h2>
+                <p>Tokyo is the capital of Japan.</p>
+            </div>
+            <div id="Resume" class="w3-container information" style="display:none">
+                <br />
+                <div style="border:solid">
+                    <embed src="~/Documents/Resume.pdf" type="application/pdf" style="width:100%; height:1000px" />
+                </div>
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[slideIndex - 1].style.display = "block";
+
+    }
+    function openInformation(info) {
+        var i;
+        var x = document.getElementsByClassName("information");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        document.getElementById(info).style.display = "block";
+    }
+</script>
+

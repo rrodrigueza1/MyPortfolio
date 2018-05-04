@@ -1,0 +1,73 @@
+﻿@model  MyPortfolio.Models.ContactInformationModel
+@{
+    ViewBag.Title = "Renzelle Frank V. Rodrigueza";
+
+}
+<br />
+<h2 class="w3-center">@ViewBag.Title</h2>
+<h4 class="w3-center">@ViewBag.Message</h4>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <div class="w3-white w3-text-grey w3-card-4">
+            <div class="w3-container">
+                <br />
+                <h4>Contact Information</h4>
+                <address>
+                    <strong>Address:</strong><br />
+                    8 - 10651 108 Avenue NW<br />
+                    Edmonton, Alberta Canada<br />
+                    <strong>Phone: </strong>
+                    780.667.9502<br />
+                    <strong>Email:</strong><a href="mailto:renzelle_rodrigueza@yahoo.ca">&nbsp;renzelle_rodrigueza@yahoo.ca</a><br />
+                </address>
+                <div id="myAddress" style="width:auto; height:400px; border:solid"></div>
+                <br />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="w3-white w3-text-grey w3-card-4">
+            <div class="w3-container">
+                 <br />
+                <h4>Feedback and Recommendation</h4>
+
+                @using (Html.BeginForm("GetContactInformation", "Home", FormMethod.Post))
+                {
+                    <br /><strong><label>Name: </label></strong><br />
+                    @Html.TextBoxFor(n => n.Name, new { placeholder ="Enter name", @class = "form-control" })
+                    <br /><strong><label>Phone: </label></strong><br />
+                    @Html.TextBoxFor(p => p.Phone, new { placeholder ="Enter phone number eg. 7806679502", @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.Phone, "" , new { @class = "text-danger"})
+                    <br /><strong><label>Email: </label></strong><br />
+                    @Html.TextBoxFor(m => m.Email, new { placeholder ="Enter email", @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Email, "" , new { @class = "text-danger"})
+                    <br /><strong><label>Comments: </label></strong><br />
+                    @Html.TextAreaFor(c => c.Comments, new { placeholder ="Comments and feedback", @class = "form-control" })
+                    <br />
+                    <br />
+                    <input type="submit"class="w3-btn w3-hover-white w3-teal w3-round-large" value="Submit" />
+                }
+                 <br />
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function initMap() {
+        var uluru = { lat: 53.552835, lng: -113.504057 };
+        var map = new google.maps.Map(document.getElementById('myAddress'), {
+            zoom: 15,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+    }
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyBpCjDO-vhkKLiwnXvOsTjwx6mp8Q1ILDU&callback=initMap">
+</script>
+
