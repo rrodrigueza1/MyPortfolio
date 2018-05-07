@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "404 - Page not Found";
+}
+<div style="text-align:center">
+
+
+    <h1>Oops! the page that your looking for doesn't exists</h1>
+    <h2>Please Try Again</h2>
+    <input type="button" class="w3-btn w3-hover-white w3-teal w3-round-large" value="Go Back to Home"
+           onclick="@("window.location.href='" + @Url.Action("Index", "Home") + "'");" />
+
+</div>
