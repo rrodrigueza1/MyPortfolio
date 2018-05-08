@@ -1,0 +1,24 @@
+﻿@model MyPortfolio.Models.AccountPOCO
+@{
+    ViewBag.Title = "Login";
+}
+<br />
+
+<div class="w3-white w3-text-grey w3-card-4">
+    <div class="w3-container">
+        <br />
+        <h2 class="w3-center">@ViewBag.Title</h2>
+        @using (Html.BeginForm("GetLoginInformation", "Home", FormMethod.Post))
+        {
+            <br /><strong><label>Username: </label></strong><br />
+            @Html.TextBoxFor(u => u.UserName, new { placeholder = "Enter username", @class = "form-control", @style = "max-width:100%" })
+            <br /><strong><label>Password: </label></strong><br />
+            @Html.PasswordFor(p => p.Password, new { placeholder = "Enter password", @class = "form-control", @style = "max-width:100%" })
+            <br />
+            <div class="w3-container" style="text-align:center">
+                <input type="submit" style="width:100%" class="w3-btn w3-hover-white w3-teal w3-round-large" value="Login" />
+            </div>
+            <br />
+        }
+    </div>
+</div>

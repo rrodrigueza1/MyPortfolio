@@ -27,5 +27,6 @@ namespace MyPortfolio
     
         public virtual DbSet<Image> Images { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
+        public virtual DbSet<Account> Accounts { get; set; }
     }
 }

@@ -1,13 +1,16 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Error</title>
-</head>
-<body>
-    <hgroup>
-        <h1>Error.</h1>
-        <h2>An error occurred while processing your request.</h2>
-    </hgroup>
-</body>
-</html>
+﻿@{
+    Layout = null;
+    ViewBag.Title = "500 - Server Error";
+}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div style="text-align:center">
+
+
+    <h1>Oops! Something went wrong</h1>
+    <h2>Please Try Again</h2>
+    <input type="button" class="w3-btn w3-hover-white w3-teal w3-round-large" value="Go Back to Home"
+           onclick="@("window.location.href='" + @Url.Action("Index", "Home") + "'");" />
+
+</div>
