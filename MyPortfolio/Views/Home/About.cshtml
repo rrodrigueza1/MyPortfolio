@@ -14,11 +14,28 @@
     </div>
     <div class="w3-container w3-card-4 w3-white w3-margin-bottom">
         <div class="w3-bar w3-teal w3-margin-top">
-            <button class="w3-bar-item w3-button" onclick="openInformation('Skill')">Skill</button>
             <button class="w3-bar-item w3-button" onclick="openInformation('Project')">Project</button>
+            <button class="w3-bar-item w3-button" onclick="openInformation('Skill')">Skills</button>
             <button class="w3-bar-item w3-button" onclick="openInformation('Resume')">Resume</button>
         </div>
-        <div id="Skill" class="w3-container information">
+        <div id="Project" class="w3-container information w3-margin-bottom w3-margin-top">
+            <div class="w3-container w3-card-4 w3-white">
+                <h2>Food Satisfaction Online Survey System - bHS Capstone Project</h2>
+                <section>
+                    <p>FSOSS is a C#/ASP.NET Web Forms online survey application for getting food satisfaction and services feedback. An Administrator section allows for viewing or managing survey and account data, and recursion for generating survey access words from a PostgreSQL database.</p>
+                    <a style="color:teal" href="https://github.com/jjoseph97/FSOSS">View On Github</a>
+                </section>
+            </div>
+            <br />
+            <div class="w3-container w3-card-4 w3-white">
+                <h2>MyPorfolio - Personnal Porfolio</h2>
+                <section>
+                    <p>My own personal website.</p>
+                    <a style="color:teal" href="https://github.com/rrodrigueza1/MyPortfolio">View On Github</a>
+                </section>
+            </div>
+        </div>
+        <div id="Skill" class="w3-container information" style="display:none">
             <br />
             <h4>ASP.NET Webforms</h4>
             <div class="w3-light-grey w3-round-xlarge w3-small">
@@ -40,7 +57,7 @@
 
                         </div>
                     </div>
-                 
+
                     counter++;
                 }
                 <div clas="row" style="text-align:center">
@@ -48,9 +65,6 @@
                     <a class="next" style="color:teal" onclick="plusSlides(1)">Next</a>
                 </div>
             </div>
-        </div>
-        <div id="Project" class="w3-container information" style="display:none">
-            <h2>Project</h2>
         </div>
         <div id="Resume" class="w3-container information" style="display:none">
             <br />

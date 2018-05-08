@@ -35,18 +35,20 @@
                 @using (Html.BeginForm("GetContactInformation", "Home", FormMethod.Post))
                 {
                     <br /><strong><label>Name: </label></strong><br />
-                    @Html.TextBoxFor(n => n.Name, new { placeholder ="Enter name", @class = "form-control" })
+                    @Html.TextBoxFor(n => n.Name, new { placeholder ="Enter name", @class = "form-control", @style = "max-width:100%" })
                     <br /><strong><label>Phone: </label></strong><br />
-                    @Html.TextBoxFor(p => p.Phone, new { placeholder ="Enter phone number eg. 7806679502", @class = "form-control" })
+                    @Html.TextBoxFor(p => p.Phone, new { placeholder ="Enter phone number eg. 7806679502", @class = "form-control", @style = "max-width:100%" })
                     @Html.ValidationMessageFor(p => p.Phone, "" , new { @class = "text-danger"})
                     <br /><strong><label>Email: </label></strong><br />
-                    @Html.TextBoxFor(m => m.Email, new { placeholder ="Enter email", @class = "form-control" })
+                    @Html.TextBoxFor(m => m.Email, new { placeholder ="Enter email", @class = "form-control", @style = "max-width:100%" })
                     @Html.ValidationMessageFor(m => m.Email, "" , new { @class = "text-danger"})
                     <br /><strong><label>Comments: </label></strong><br />
-                    @Html.TextAreaFor(c => c.Comments, new { placeholder ="Comments and feedback", @class = "form-control" })
+                    @Html.TextAreaFor(c => c.Comments, new { placeholder ="Comments and feedback", @class = "form-control", @style = "max-width:100%" })
                     <br />
-                    <br />
-                    <input type="submit"class="w3-btn w3-hover-white w3-teal w3-round-large" value="Submit" />
+                    <div class="w3-container" style="text-align:center">
+                        <input type="submit" style="width:100%" class="w3-btn w3-hover-white w3-teal w3-round-large" value="Submit" />
+                    </div>
+                   
                 }
                  <br />
             </div>
