@@ -1,11 +1,42 @@
-﻿
+﻿@model MyPortfolio.Models.SingleProjectModel
 @{
     ViewBag.Title = "Admin";
 }
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css" rel="stylesheet">
+<div class="w3-margin-top">
+    <div class="w3-container w3-card-4 w3-white w3-margin-bottom" style="text-align:center">
+        <h2>Hello Renzelle!</h2>
+        <div class="w3-container w3-card-4 w3-grey w3-margin-bottom" style="text-align:center">
+            @using (Html.BeginForm("SaveProjectForm", "Home", FormMethod.Post))
+            {
+                <br /><strong><label>Project Name: </label></strong><br />
+                @Html.TextBoxFor(m => m.ProjectName, new { placeholder = "Enter project name", @class = "form-control", @style = "max-width:100%" })
+                <br /><strong><label>Description: </label></strong><br />
+                @Html.TextAreaFor(m => m.ProjectDescription, new { placeholder = "Enter description", @class = "form-control", @style = "max-width:100%" })
+                <br /><strong><label>Project Link: </label></strong><br />
+                @Html.TextBoxFor(m => m.ProjectLink, new { placeholder = "Enter link", @class = "form-control", @style = "max-width:100%" })
+                <br /><strong><label>Date Created: </label></strong><br />
+                @Html.TextBoxFor(m => m.DateCreated, new { placeholder = "Select date", @class = "form-control", id = "datepicker", @style = "max-width:100%" })
+                <br /><strong><label>Date Finished: </label></strong><br />
+                @Html.TextBoxFor(m => m.DateFinished, new { placeholder = "Select date", @class = "form-control", id = "datepicker", @style = "max-width:100%" })
+                <br />
+                <div class="w3-container" style="text-align:center">
+                    <input type="submit" style="width:100%" class="w3-btn w3-hover-white w3-teal w3-round-large" value="Submit" />
+                </div>
+                <br />
+            }
+        </div>
+    </div>
+    @{
+        Html.RenderPartial("_PartialAdminImage");
+    }
 
-<h2>Hello Renzelle!</h2>
-
-<div class="w3-container" style="text-align:center">
-    <input type="button" style="width:100%" class="w3-btn w3-hover-white w3-teal w3-round-large" value="Logout" onclick="location.href='@Url.Action("LogoutAction", "Home")'" />
 </div>
 
+<script type="text/javascript">
+    $(function () {
+        $("#datepicker").datepicker();
+    });
+</script>

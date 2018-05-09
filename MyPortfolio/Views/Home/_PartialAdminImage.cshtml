@@ -1,0 +1,14 @@
+﻿<div class="w3-container w3-card-4 w3-white w3-margin-bottom" style="text-align:center">
+    <div class="w3-container w3-card-4 w3-grey w3-margin-bottom w3-margin-top" style="text-align:center">
+        <br />
+        <h4>Add Image</h4>
+        @Html.DropDownList("SelectedProject", ViewBag.VBProjectList as SelectList, "ProjectName", "ProjectId")
+        @using (Html.BeginForm(null,  null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <label for="file">Upload Image:</label>
+            <input type="file" name="file" id="file" style="width: 100%;" />
+            <input type="submit" value="Upload" class="submit" />
+        }
+    </div>
+    <input type="button" style="width:100%" class="w3-btn w3-hover-white w3-teal w3-round-large" value="Logout" onclick="location.href='@Url.Action("LogoutAction", "Home")'" />
+</div>

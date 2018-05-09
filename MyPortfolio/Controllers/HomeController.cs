@@ -10,6 +10,8 @@ using System.Web.Helpers;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 
 namespace MyPortfolio.Controllers
 {
@@ -54,8 +56,68 @@ namespace MyPortfolio.Controllers
             return View("Contact", model);
         }
 
+        public ActionResult FileUpload(HttpPostedFileBase file)
+        {
+            if (file != null)
+            {
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    file.InputStream.CopyTo(ms);
+                    byte[] array = ms.GetBuffer();
+                }
+            }
+            GetProjectModelList();
+            return View("Admin");
+        }
+
+        [HttpPost]
+        public ActionResult SaveProjectForm(SingleProjectModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    using (var context = new MyPortfolioDatabaseEntities())
+                    {
+                        Project project = new Project()
+                        {
+                            ProjectName = model.ProjectName,
+                            DateCreated = model.DateCreated,
+                            ProjectDescription = model.ProjectDescription,
+                            DateFinished = model.DateFinished,
+                            ProjectList = model.ProjectLink
+                        };
+                        context.Projects.Add(project);
+                        context.SaveChanges();
+                    }
+                }
+                catch (DbEntityValidationException e)
+                {
+
+                    foreach (var eve in e.EntityValidationErrors)
+                    {
+                        foreach (var validationErrors in e.EntityValidationErrors)
+                        {
+                            foreach (var validationError in validationErrors.ValidationErrors)
+                            {
+                                Trace.TraceInformation("Property: {0} Error: {1}",
+                                                        validationError.PropertyName,
+                                                        validationError.ErrorMessage);
+                            }
+                        }
+                    }
+                }
+            }
+            GetProjectModelList();
+            return View("Admin");
+        }
+
         public ActionResult Login()
         {
+            if (Session["AccountId"] != null)
+            {
+                return RedirectToAction("Admin", "Home");
+            }
             return View();
         }
 
@@ -67,22 +129,42 @@ namespace MyPortfolio.Controllers
             }
             else
             {
-
+                GetProjectModelList();
             }
+
             return View();
+        }
+
+        public void GetProjectModelList()
+        {
+            ProjectModel projectModelEntity = new ProjectModel();
+            List<Project> projectList = new List<Project>();
+            using (var context = new MyPortfolioDatabaseEntities())
+            {
+                var projectModel = (from x in context.Projects
+                                    select new ProjectModel
+                                    {
+                                        ProjectName = x.ProjectName,
+                                        ProjectId = x.ProjectId
+                                    }).ToList();
+                projectModelEntity.ProjectList = new SelectList(projectModel, "ProjectId", "ProjectName");
+            }
+            ViewBag.VBProjectList = projectModelEntity.ProjectList;
+
         }
         public ActionResult LogoutAction()
         {
             try
             {
                 Session.Abandon();
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index", "Home");
             }
             catch (Exception e)
             {
                 throw new Exception(e.Message);
             }
         }
+
         [HttpPost]
         public ActionResult GetLoginInformation(AccountPOCO model)
         {
@@ -102,6 +184,7 @@ namespace MyPortfolio.Controllers
                     }
                     if (user != null)
                     {
+
                         Session["AccountID"] = user.AccountId.ToString();
                         return RedirectToAction("Admin");
                     }
@@ -111,7 +194,7 @@ namespace MyPortfolio.Controllers
                     throw new Exception(e.Message);
                 }
             }
-            return View("Login", model);
+            return View("Login");
         }
     }
 }

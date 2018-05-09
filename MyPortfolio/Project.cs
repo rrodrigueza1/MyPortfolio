@@ -23,7 +23,9 @@ namespace MyPortfolio
         public int ProjectId { get; set; }
         public string ProjectName { get; set; }
         public string ProjectDescription { get; set; }
+        public string ProjectList { get; set; }
         public System.DateTime DateCreated { get; set; }
+        public Nullable<System.DateTime> DateFinished { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Image> Images { get; set; }

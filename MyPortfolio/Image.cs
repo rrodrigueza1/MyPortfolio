@@ -17,7 +17,7 @@ namespace MyPortfolio
         public int ImageId { get; set; }
         public string ImageName { get; set; }
         public string ImageDescription { get; set; }
-        public byte[] Image1 { get; set; }
+        public byte[] Picture { get; set; }
         public int ProjectId { get; set; }
     
         public virtual Project Project { get; set; }

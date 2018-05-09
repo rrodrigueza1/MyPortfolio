@@ -18,9 +18,9 @@
             <PropertyRef Name="ImageId" />
           </Key>
           <Property Name="ImageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ImageName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ImageDescription" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="Image" Type="image" Nullable="false" />
+          <Property Name="ImageName" Type="varchar" MaxLength="1500" Nullable="false" />
+          <Property Name="ImageDescription" Type="varchar" MaxLength="1500" Nullable="false" />
+          <Property Name="Picture" Type="image" Nullable="false" />
           <Property Name="ProjectId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Project">
@@ -28,9 +28,11 @@
             <PropertyRef Name="ProjectId" />
           </Key>
           <Property Name="ProjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProjectName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ProjectDescription" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ProjectName" Type="varchar" MaxLength="1500" Nullable="false" />
+          <Property Name="ProjectDescription" Type="varchar" MaxLength="1500" Nullable="false" />
+          <Property Name="ProjectList" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="DateCreated" Type="date" Nullable="false" />
+          <Property Name="DateFinished" Type="date" />
         </EntityType>
         <Association Name="FK_ProjectImage">
           <End Role="Project" Type="Self.Project" Multiplicity="1" />
@@ -57,47 +59,14 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MyPortfolioDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Image">
-          <Key>
-            <PropertyRef Name="ImageId" />
-          </Key>
-          <Property Name="ImageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ImageDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Image1" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <Property Name="ProjectId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Project" Relationship="Self.FK_ProjectImage" FromRole="Image" ToRole="Project" />
-        </EntityType>
-        <EntityType Name="Project">
-          <Key>
-            <PropertyRef Name="ProjectId" />
-          </Key>
-          <Property Name="ProjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ProjectDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Images" Relationship="Self.FK_ProjectImage" FromRole="Project" ToRole="Image" />
-        </EntityType>
-        <Association Name="FK_ProjectImage">
-          <End Role="Project" Type="Self.Project" Multiplicity="1" />
-          <End Role="Image" Type="Self.Image" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Project">
-              <PropertyRef Name="ProjectId" />
-            </Principal>
-            <Dependent Role="Image">
-              <PropertyRef Name="ProjectId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="MyPortfolioDatabaseEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Images" EntityType="Self.Image" />
-          <EntitySet Name="Projects" EntityType="Self.Project" />
-          <AssociationSet Name="FK_ProjectImage" Association="Self.FK_ProjectImage">
+          <EntitySet Name="Accounts" EntityType="MyPortfolioDatabaseModel.Account" />
+          <EntitySet Name="Images" EntityType="MyPortfolioDatabaseModel.Image" />
+          <EntitySet Name="Projects" EntityType="MyPortfolioDatabaseModel.Project" />
+          <AssociationSet Name="FK_ProjectImage" Association="MyPortfolioDatabaseModel.FK_ProjectImage">
             <End Role="Project" EntitySet="Projects" />
             <End Role="Image" EntitySet="Images" />
           </AssociationSet>
-          <EntitySet Name="Accounts" EntityType="MyPortfolioDatabaseModel.Account" />
         </EntityContainer>
         <EntityType Name="Account">
           <Key>
@@ -107,39 +76,76 @@
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PasswordHash" Type="Binary" Nullable="false" MaxLength="64" FixedLength="true" />
         </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="ImageId" />
+          </Key>
+          <Property Name="ImageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageName" Type="String" Nullable="false" MaxLength="1500" FixedLength="false" Unicode="false" />
+          <Property Name="ImageDescription" Type="String" Nullable="false" MaxLength="1500" FixedLength="false" Unicode="false" />
+          <Property Name="Picture" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Project" Relationship="MyPortfolioDatabaseModel.FK_ProjectImage" FromRole="Image" ToRole="Project" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectName" Type="String" Nullable="false" MaxLength="1500" FixedLength="false" Unicode="false" />
+          <Property Name="ProjectDescription" Type="String" Nullable="false" MaxLength="1500" FixedLength="false" Unicode="false" />
+          <Property Name="ProjectList" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateFinished" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Images" Relationship="MyPortfolioDatabaseModel.FK_ProjectImage" FromRole="Project" ToRole="Image" />
+        </EntityType>
+        <Association Name="FK_ProjectImage">
+          <End Type="MyPortfolioDatabaseModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="MyPortfolioDatabaseModel.Image" Role="Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="MyPortfolioDatabaseModelStoreContainer" CdmEntityContainer="MyPortfolioDatabaseEntities">
-          <EntitySetMapping Name="Images">
-            <EntityTypeMapping TypeName="MyPortfolioDatabaseModel.Image">
-              <MappingFragment StoreEntitySet="Image">
-                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
-                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
-                <ScalarProperty Name="ImageDescription" ColumnName="ImageDescription" />
-                <ScalarProperty Name="Image1" ColumnName="Image" />
-                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Projects">
-            <EntityTypeMapping TypeName="MyPortfolioDatabaseModel.Project">
-              <MappingFragment StoreEntitySet="Project">
-                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
-                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
-                <ScalarProperty Name="ProjectDescription" ColumnName="ProjectDescription" />
-                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Accounts">
             <EntityTypeMapping TypeName="MyPortfolioDatabaseModel.Account">
               <MappingFragment StoreEntitySet="Account">
                 <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="MyPortfolioDatabaseModel.Image">
+              <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="ImageDescription" ColumnName="ImageDescription" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projects">
+            <EntityTypeMapping TypeName="MyPortfolioDatabaseModel.Project">
+              <MappingFragment StoreEntitySet="Project">
+                <ScalarProperty Name="DateFinished" ColumnName="DateFinished" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="ProjectList" ColumnName="ProjectList" />
+                <ScalarProperty Name="ProjectDescription" ColumnName="ProjectDescription" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
