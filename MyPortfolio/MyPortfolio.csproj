@@ -284,6 +284,11 @@
     <Content Include="Images\FSOSSImages\UserPage.PNG" />
     <Content Include="Images\FSOSSImages\WebConfig.PNG" />
     <Content Include="Images\FSOSSImages\WebMethodReport.PNG" />
+    <Content Include="Images\MyPortfolioImages\AdminPage.PNG" />
+    <Content Include="Images\MyPortfolioImages\ContactPage.PNG" />
+    <Content Include="Images\MyPortfolioImages\ContactView.PNG" />
+    <Content Include="Images\MyPortfolioImages\HomeControllerMyPortfolio.PNG" />
+    <Content Include="Images\MyPortfolioImages\LayoutCS.PNG" />
     <Content Include="Images\ProfilePic.jpg" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

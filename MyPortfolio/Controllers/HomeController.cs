@@ -41,7 +41,7 @@ namespace MyPortfolio.Controllers
         }
         public ActionResult Contact()
         {
-            ViewBag.Message = "Looking for Software Developer - Entry Level Position";
+            ViewBag.Message = "Junior Software Developer";
 
             return View();
         }

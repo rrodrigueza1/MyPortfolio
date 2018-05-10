@@ -1,7 +1,7 @@
 ﻿@model MyPortfolio.Models.PhotoModel
 @{
     ViewBag.Title = "About Me!";
-    ViewBag.Message = "I'm a fresh graduate at NAIT from Digital Media and Information Technology Program. I'm seeking for an Software Developer - Entry Level Position.";
+    ViewBag.Message = "I'm a fresh graduate at NAIT from Digital Media and Information Technology program under Computer Software Development stream. I'm seeking for an Software Developer - Entry Level Position.";
 }
 
 <div class="w3-margin-top">
@@ -28,7 +28,7 @@
                 <div class="w3-light-grey w3-round-xlarge w3-small">
                     <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">90%</div>
                 </div>
-                <p>Knowledgeable in using webforms </p>
+                <p>Knowledgable in using ASP.Net Webforms</p>
                 <div class="w3-row-padding w3-margin-top">
                     @{int counter = 1;}
                     @foreach (var image in Model.ImageFilePath)
@@ -54,12 +54,27 @@
                     <br />
                 </div>
             </div>
-            <div class="w3-container w3-card-4 w3-white w3-margin-top">
+            <div class="w3-container w3-card-4 w3-white w3-margin-top w3-margin-bottom">
 
                 @Html.Action("_PartialViewAboutMVC", "Home");
 
             </div>
-
+            <div class="w3-container w3-card-4 w3-white w3-margin-top w3-margin-bottom">
+                <br />
+                <h4>Database Design and Programming</h4>
+                <div class="w3-light-grey w3-round-xlarge w3-small">
+                    <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:75%">75%</div>
+                </div>
+                <p>Design and created database for project</p>
+                <div class="w3-row-padding w3-margin-top" style="text-align:center">
+                    <h5><span style="color:teal; font-weight:100">Database design for FSOSS</span></h5>
+                    <div class="w3-container w3-card-4 w3-white w3-margin-bottom">
+                        <div class="w3-container">
+                            <img src="~/Images/DatabaseDesignImages/FSOSSDatabaseDiagram.jpeg" style="width:100%; height:400px">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div id="Resume" class="w3-container information" style="display:none">
             <br />
@@ -69,34 +84,35 @@
             <br />
         </div>
     </div>
+</div>
 
-    <script>
-        function openInformation(info) {
-            var i;
-            var x = document.getElementsByClassName("information");
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            document.getElementById(info).style.display = "block";
+<script>
+    function openInformation(info) {
+        var i;
+        var x = document.getElementsByClassName("information");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
         }
-        var slideIndex = [1, 1];
-        var slideId = ["mySlides", "mySlides2"]
-        showDivs(1, 0);
-        showDivs(1, 1);
+        document.getElementById(info).style.display = "block";
+    }
+    var slideIndex = [1, 1];
+    var slideId = ["mySlides", "mySlides2"]
+    showDivs(1, 0);
+    showDivs(1, 1);
 
-        function plusDivs(n, no) {
-            showDivs(slideIndex[no] += n, no);
-        }
+    function plusDivs(n, no) {
+        showDivs(slideIndex[no] += n, no);
+    }
 
-        function showDivs(n, no) {
-            var i;
-            var x = document.getElementsByClassName(slideId[no]);
-            if (n > x.length) { slideIndex[no] = 1 }
-            if (n < 1) { slideIndex[no] = x.length }
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            x[slideIndex[no] - 1].style.display = "block";
+    function showDivs(n, no) {
+        var i;
+        var x = document.getElementsByClassName(slideId[no]);
+        if (n > x.length) { slideIndex[no] = 1 }
+        if (n < 1) { slideIndex[no] = x.length }
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
         }
-    </script>
+        x[slideIndex[no] - 1].style.display = "block";
+    }
+</script>
 
