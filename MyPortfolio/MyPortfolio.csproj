@@ -257,12 +257,14 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Documents\FSOSSDatabaseInstallScript.txt" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\DatabaseDesignImages\FSOSSDatabaseDiagram.jpeg" />
     <Content Include="Images\FSOSSImages\AdminPage.PNG" />
     <Content Include="Images\FSOSSImages\EditQuestionPage.PNG" />
     <Content Include="Images\FSOSSImages\Entity.PNG" />
