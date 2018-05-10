@@ -31,12 +31,30 @@ namespace MyPortfolio.Controllers
             };
             return View(photoModel);
         }
-
+        public ActionResult _PartialViewAboutMVC()
+        {
+            PhotoModel photoModel = new PhotoModel()
+            {
+                ImageFilePath = Directory.EnumerateFiles(Server.MapPath("~/Images/MyPortfolioImages")).Select(image => "~/Images/MyPortfolioImages/" + Path.GetFileName(image))
+            };
+            return PartialView("_PartialViewAboutMVC", photoModel);
+        }
         public ActionResult Contact()
         {
             ViewBag.Message = "Looking for Software Developer - Entry Level Position";
 
             return View();
+        }
+
+        public ActionResult _PartialViewAboutProject()
+        {
+            List<Project> projectModelList = new List<Project>();
+            using (var context = new MyPortfolioDatabaseEntities())
+            {
+                projectModelList = (from x in context.Projects
+                                    select x).ToList();
+            }
+                return PartialView("_PartialViewAboutProject", projectModelList);
         }
 
         [HttpPost]

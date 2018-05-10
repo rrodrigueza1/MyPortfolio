@@ -1,0 +1,13 @@
+﻿@model  List<Project>
+
+@foreach (Project project in Model)
+{
+    <div class="w3-container w3-card-4 w3-white">
+        <h2>@project.ProjectName</h2>
+        <section>
+            <p>@project.ProjectDescription</p>
+            <a style="color:teal" href="@project.ProjectList">View On Github</a>
+        </section>
+    </div>
+    <br />
+}

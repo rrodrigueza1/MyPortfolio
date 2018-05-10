@@ -100,6 +100,9 @@
         }
     </style>
     <title>@ViewBag.Title - My Portfolio </title>
+    @{ 
+        Html.RenderPartial("_GoogleAnalyticPage");
+    }
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -107,7 +110,7 @@
     <div class="w3-top">
         <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
             <div class="w3-center">
-                @Html.ActionLink("My Portofolio", "Index", "Home", new { @class = "navbar-brand", @style = "color:teal" })
+                @Html.ActionLink("My Portfolio", "Index", "Home", new { @class = "navbar-brand", @style = "color:teal" })
 
                 @Html.ActionLink("Home", "Index", "Home", new { @style = "color:teal" })
                 @Html.ActionLink("About", "About", "Home", new { @style = "color:teal" })

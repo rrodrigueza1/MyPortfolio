@@ -1,9 +1,10 @@
-﻿<div class="w3-container w3-card-4 w3-white w3-margin-bottom" style="text-align:center">
+﻿@model MyPortfolio.Models.PhotoModel
+<div class="w3-container w3-card-4 w3-white w3-margin-bottom" style="text-align:center">
     <div class="w3-container w3-card-4 w3-grey w3-margin-bottom w3-margin-top" style="text-align:center">
         <br />
         <h4>Add Image</h4>
         @Html.DropDownList("SelectedProject", ViewBag.VBProjectList as SelectList, "ProjectName", "ProjectId")
-        @using (Html.BeginForm(null,  null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             <label for="file">Upload Image:</label>
             <input type="file" name="file" id="file" style="width: 100%;" />

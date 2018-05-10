@@ -381,6 +381,9 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Admin.cshtml" />
     <Content Include="Views\Home\_PartialAdminImage.cshtml" />
+    <Content Include="Views\Home\_GoogleAnalyticPage.cshtml" />
+    <Content Include="Views\Home\_PartialViewAboutMVC.cshtml" />
+    <Content Include="Views\Home\_PartialViewAboutProject.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
