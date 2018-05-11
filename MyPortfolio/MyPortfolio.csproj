@@ -267,14 +267,12 @@
     <Content Include="Images\DatabaseDesignImages\FSOSSDatabaseDiagram.jpeg" />
     <Content Include="Images\FSOSSImages\AdminPage.PNG" />
     <Content Include="Images\FSOSSImages\EditQuestionPage.PNG" />
-    <Content Include="Images\FSOSSImages\Entity.PNG" />
     <Content Include="Images\FSOSSImages\FilterPage.PNG" />
     <Content Include="Images\FSOSSImages\HangfirePage.PNG" />
     <Content Include="Images\FSOSSImages\IndexPage.PNG" />
     <Content Include="Images\FSOSSImages\JQueryReport.PNG" />
     <Content Include="Images\FSOSSImages\LandingPage.PNG" />
     <Content Include="Images\FSOSSImages\LoginPage.PNG" />
-    <Content Include="Images\FSOSSImages\POCO.PNG" />
     <Content Include="Images\FSOSSImages\ReportCode.PNG" />
     <Content Include="Images\FSOSSImages\ReportPage.PNG" />
     <Content Include="Images\FSOSSImages\SiteController.PNG" />
@@ -282,7 +280,6 @@
     <Content Include="Images\FSOSSImages\SubmittedSurveyPage.PNG" />
     <Content Include="Images\FSOSSImages\SurveyPage.PNG" />
     <Content Include="Images\FSOSSImages\SurveyWordControllerCode.PNG" />
-    <Content Include="Images\FSOSSImages\ThankYouPage.PNG" />
     <Content Include="Images\FSOSSImages\UserPage.PNG" />
     <Content Include="Images\FSOSSImages\WebConfig.PNG" />
     <Content Include="Images\FSOSSImages\WebMethodReport.PNG" />
