@@ -18,9 +18,9 @@
                 <br /><strong><label>Project Link: </label></strong><br />
                 @Html.TextBoxFor(m => m.ProjectLink, new { placeholder = "Enter project link", @class = "form-control", @style = "max-width:100%" })
                 <br /><strong><label>Date Created: </label></strong><br />
-                @Html.TextBoxFor(m => m.DateCreated, new { placeholder = "Select start date", @class = "form-control", id = "datepicker", @style = "max-width:100%" })
+                @Html.TextBoxFor(m => m.DateCreated, new { placeholder = "Select start date", @class = "form-control", id = "startdatepicker", @style = "max-width:100%" })
                 <br /><strong><label>Date Finished: </label></strong><br />
-                @Html.TextBoxFor(m => m.DateFinished, new { placeholder = "Select end date", @class = "form-control", id = "datepicker", @style = "max-width:100%" })
+                @Html.TextBoxFor(m => m.DateFinished, new { placeholder = "Select end date", @class = "form-control", id = "enddatepicker", @style = "max-width:100%" })
                 <br />
                 <div class="w3-container" style="text-align:center">
                     <input type="submit" style="width:100%" class="w3-btn w3-hover-white w3-teal w3-round-large" value="Submit" />
@@ -37,6 +37,9 @@
 
 <script type="text/javascript">
     $(function () {
-        $("#datepicker").datepicker();
+        $("#startdatepicker").datepicker();
+    });
+    $(function () {
+        $("#enddatepicker").datepicker();
     });
 </script>
